@@ -1,0 +1,68 @@
+.main-container{
+	margin-top: 6%;
+}
+
+
+/*
+	***Tic Tac Toe Styling Begin***
+*/
+	/*#ticTacToeContainer {
+		margin: 5%;
+		height: 50%;
+		width: 80%;
+		border: solid;
+		overflow: hidden;
+	}*/
+
+
+
+	#topRightCell {
+		border-left: solid;
+		border-bottom: solid;
+	}
+
+	#topMiddleCell {
+		border-left: solid;
+		border-right: solid;
+		border-bottom: solid;
+	}
+
+	#topLeftCell {
+		border-right: solid;
+		border-bottom: solid;
+	}
+
+	#centerRightCell {
+		border-left: solid;
+		border-top: solid;
+		border-bottom: solid;
+	}
+
+	#centerMiddleCell {
+		border: solid;
+	}
+
+	#centerLeftCell {
+		border-right: solid;
+		border-top: solid;
+		border-bottom: solid;
+	}
+
+	#bottomRightCell {
+		border-left: solid;
+		border-top: solid;
+	}
+
+	#bottomMiddleCell {
+		border-left: solid;
+		border-right: solid;
+		border-top: solid;
+	}
+
+	#bottomLeftCell {
+		border-right: solid;
+		border-top: solid;
+	}
+/*
+	***Tic Tac Toe Styling End***
+*/

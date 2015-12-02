@@ -1,0 +1,30 @@
+{
+  "name": "TicTacToeCMG",
+  "description": "Tic Tac Toe Game for CMG Interview",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "bower",
+    "javascript",
+    "bootstart",
+    "angular"
+  ],
+  "authors": [
+    "Carlos R Morales"
+  ],
+  "license": "none",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.1.4"
+  }
+}
