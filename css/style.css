@@ -6,13 +6,15 @@
 /*
 	***Tic Tac Toe Styling Begin***
 */
-	/*#ticTacToeContainer {
-		margin: 5%;
-		height: 50%;
-		width: 80%;
-		border: solid;
-		overflow: hidden;
-	}*/
+	.ticTacToeCell {
+		background-color: #78bec5;
+		border-radius: 14px;
+		cursor: pointer;
+		color: #fff;
+		height: 90px;
+		margin: 5px;
+		width: 90px;
+	}
 
 
 

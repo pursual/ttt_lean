@@ -1,0 +1,36 @@
+{
+  "name": "tic_tac_toe_cmg",
+  "version": "1.0.0",
+  "description": "A game of Tic Tac Toe developed by Carlos Morales for Cox Media Group",
+  "main": "index.html",
+  "dependencies": {
+    "browser-sync": "^2.10.0"
+  },
+  "devDependencies": {
+    "bower": "^1.6.8",
+    "gulp": "^3.9.0",
+    "jasmine": "^2.3.2",
+    "karma": "^0.13.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosmorales125/TicTacToeCMG.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "angular",
+    "bower",
+    "jasmine",
+    "karma-runner",
+    "gulp"
+  ],
+  "author": "Carlos R. Morales",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlosmorales125/TicTacToeCMG/issues"
+  },
+  "homepage": "https://github.com/carlosmorales125/TicTacToeCMG#readme"
+}

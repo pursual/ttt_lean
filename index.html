@@ -8,7 +8,6 @@
     <link href="public/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Loading Flat UI -->
-    <link href="css/flat-ui.css" rel="stylesheet">
     
     <link href="css/style.css" rel="stylesheet">
 
@@ -26,7 +25,7 @@
     <!--headerIncludes-->   
 </head>
 
-<body>
+<body ng-app="ticTacToe">
     
     <div id="page" class="page">
         
@@ -41,7 +40,7 @@
     						<button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
     							<span class="sr-only">Toggle navigation</span>
     						</button>
-    						<a href="#" class="navbar-brand"><img alt="" src="images/icons/brush.svg" style="height: 45px;"> Tic Tac Toe</a>
+    						<a href="#" class="navbar-brand"><img alt="" src="images/gameIcons/ticTacToe.png" style="height: 45px;"> Tic Tac Toe</a>
     						</div>
     								
     					<div id="navbar-collapse-02" class="collapse navbar-collapse">
@@ -56,120 +55,11 @@
     	
     		</div><!-- /.wrpaper -->
     
+    <div ng-view>
+    	
+    </div>
 
 
-    			<div class="item content padding-top-0 padding-bottom-0" id="content_section1">
-    	
-    		<div class="wrapper grey">
-    		
-    		<div class="container">
-    		
-    			<div class="row margin-bottom-60">
-    			
-    				<div class="col-md-12">
-    					
-    					<div class="editContent">
-    					<h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-    					
-    					<p class="lead">
-    						Suspendisse potenti. Proin hendrerit ornare dictum. Quisque nunc arcu, lacinia et elit et, adipiscing malesuada felis. Nullam quam augue, euismod vitae turpis sed.
-    					</p>
-    					</div><!-- /.editContent -->
-    				
-    				</div>
-    			
-    			</div><!-- /.row -->
-    		
-    			<div class="row">
-    			
-    				<div class="col-md-6 text-center">
-    				   
-    				   	<div class="col">
-    				   	
-    						<img alt="" src="images/icons/brush.svg" style="width: 30%;">
-    					
-    						<div class="editContent">
-    						<h3>Human Vs. Human</h3>
-    						
-    						<p>
-    							Ut non lobortis est. Ut dictum scelerisque luctus. Aliquam condimentum interdum odio, et fermentum nulla pharetra in. Praesent pellentesque neque nec eros tempus, ac venenatis ante interdum.
-    						</p>
-    						</div><!-- /.editContent -->
-    					
-    					</div><!-- /.col -->
-    						    					    				
-    				</div><!-- /.col-md-6 col -->
-    				
-    				<div class="col-md-6 text-center">
-    				    
-    				    <div class="col">
-    				    			
-    						<img alt="" src="images/icons/dynamite.svg" style="width: 30%;">
-    					
-    						<div class="editContent">
-    						<h3>Human Vs. Computer</h3>
-    						
-    						<p>
-    							Ut non lobortis est. Ut dictum scelerisque luctus. Aliquam condimentum interdum odio, et fermentum nulla pharetra in. Praesent pellentesque neque nec eros tempus, ac venenatis ante interdum.
-    						</p>
-    						</div><!-- /.editContent -->
-    						
-    					</div><!-- /.col -->
-    						    					    				
-    				</div><!-- /.col-md-6 col -->
-    			
-    			</div><!-- /.row -->
-    		
-    		</div><!-- /.container -->
-    		
-    		</div><!-- /.wrapper -->
-    	
-    	<div class="row">
-    	<div class="wrapperDark">
-    
-    		<div class="container" id="divider5">
-    	
-    			<div class="col-md-12">
-        
-    				<div class="divider dashed">
-    	
-    					<span class="editContent">BUILT - WITH</span>
-    	
-    				</div><!-- /.divider -->
-    			    		
-    			</div><!-- /.col -->
-    		
-    		</div><!-- /.container -->
-    	
-    	</div><!-- /.wrapperDark -->
-
-    	</div>
-
-    <section id="content-1-7" class="content-1-7 content-block">
-    
-		<div class="container">
-			
-			<div class="row">
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<a href="https://getbootstrap.com/"><img alt="Client Logo" src="images/partner-logos/logo-bootstrap.png"></a>
-				</div>
-				
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<a href="https://angular.io/"><img alt="Client Logo" src="images/partner-logos/logo-angularjs.png"></a>
-				</div>
-				
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<a href="http://bower.io/"><img alt="Client Logo" src="images/partner-logos/logo-bower.png"></a>
-				</div>
-				
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<a href="https://jquery.com/"><img alt="Client Logo" src="images/partner-logos/logo-jquery.png"></a>
-				</div>
-			</div><!--end of row-->
-					
-		</div><!-- /.container -->
-    
-    </section>
     <!-- // End Content Block 1-7 --><!-- Start Footer Copyright Bar -->
 	<div class="copyright-bar bg-black">
 		<div class="container">
@@ -184,10 +74,16 @@
 	<!--// END Footer -->
 	</div><!-- /#page -->
 
-
     <!-- Load JS here =============================-->
     <script src="public/jquery/dist/jquery.min.js"></script>
     <script src="public/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="public/angular/angular.min.js"></script>
+    <script src="public/angular-route/angular-route.min.js"></script>
+    <script src="Main/app.js"></script>
+    <script src="Main/viewRouter.js"></script>
+    <script src="Main/Controllers/AboutController.js"></script>
+    <script src="Main/Controllers/HomeController.js"></script>
+    <script src="Main/Controllers/GameController.js"></script>
    
 
 </body>
