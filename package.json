@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "A game of Tic Tac Toe developed by Carlos Morales for Cox Media Group",
   "main": "index.html",
-  "dependencies": {
-    "browser-sync": "^2.10.0"
-  },
   "devDependencies": {
     "bower": "^1.6.8",
     "gulp": "^3.9.0",

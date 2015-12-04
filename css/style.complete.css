@@ -9112,6 +9112,7 @@ fieldset[disabled] .navbar-inverse .navbar-btn.active {
     background-color: #233447;
     position: relative;
     bottom: 0;
+    margin: auto;
 }
 
 .copyright-bar p {
