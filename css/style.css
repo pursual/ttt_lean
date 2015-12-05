@@ -4,8 +4,13 @@ html,body{
 
 #gameContainer{
 	height: 500px;
-	width: 310px;
+	width: 330px;
 	margin: auto;
+	padding-top: 22px;
+}
+
+.fa{
+	padding: 16% 12% 6% 6%;
 }
 
 /*
@@ -18,9 +23,9 @@ html,body{
 		border-radius: 14px;
 		cursor: pointer;
 		color: #fff;
-		height: 90px;
+		height: 100px;
 		margin: 5px;
-		width: 90px;
+		width: 100px;
 	}
 
 	.ticTacToeCell:hover{
