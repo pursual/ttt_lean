@@ -22,13 +22,13 @@
 	    			<div class="row">
 	    				<div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-12 pull-right">
 					<div class="editContent">
-						<h1>The </h1>
+						<h1>Who Goes First? </h1>
 					</div>
 					<div class="editContent">
-						<p class="lead">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labor. Et harum quidem rerum.</p>
+						<p class="lead">{{directions}}</p>
 					</div>
 					<div class="editContent">
-						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labor. Et harum quidem rerum.</p>
+						<h1>Current Player: {{currentPlayer}} </h1>
 					</div>
 				</div>
 	    				<div class="col-lg-5 col-md-6 col-sm-12 pull-left pull-left">
@@ -36,39 +36,39 @@
 	    						<!-- Top Row Start-->
 	    						<div class"row" >
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(1)" id="topLeftCell">
-	    								<i class="{{GameController.cell1.gameIcon}}"></i>
+	    								<i ng-bind-html="cell1.cellIcon"></i>
 	    							</div>	
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(2)" id="topMiddleCell">
-	    								Top Middle 2
+	    								<i ng-bind-html="cell2.cellIcon"></i>
 	    							</div>	
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(3)" id="topRightCell">
-	    								Top Right 3
+	    								<i ng-bind-html="cell3.cellIcon"></i>
 	    							</div>	
 	    						</div>
 	    						<!-- Top Row Stop-->
 	    						<!-- Center Row Start-->
 	    						<div class"row" >	
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(4)" id="centerLeftCell">
-	    								Center Left 4
+	    								<i ng-bind-html="cell4.cellIcon"></i>
 	    							</div>	
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(5)" id="centerMiddleCell">
-	    								Center Middle 5
+	    								<i ng-bind-html="cell5.cellIcon"></i>
 	    							</div>	
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(6)" id="centerRightCell">
-	    								Center Right 6
+	    								<i ng-bind-html="cell6.cellIcon"></i>
 	    							</div>	
 	    						</div>
 	    						<!-- Center Row Stop-->
 	    						<!-- Bottom Row Start-->
 	    						<div class"row" >
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(7)" id="bottomLeftCell">
-	    								Bottom Left 7
+	    								<i ng-bind-html="cell7.cellIcon"></i>
 	    							</div>	
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(8)" id="bottomMiddleCell">
-	    								Bottm Middle 8
+	    								<i ng-bind-html="cell8.cellIcon"></i>
 	    							</div>	
 	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(9)" id="bottomRightCell">
-	    								Bottem Right 9
+	    								<i ng-bind-html="cell9.cellIcon"></i>
 	    							</div>	
 	    						</div>
 	    						<!-- Bottom Row Stop-->

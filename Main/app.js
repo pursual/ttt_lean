@@ -1,1 +1,1 @@
-var ticTacToe = angular.module('ticTacToe', ['ngRoute']);
+var ticTacToe = angular.module('ticTacToe', ['ngRoute', 'ngSanitize']);

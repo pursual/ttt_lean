@@ -5,23 +5,24 @@ function GameControllerFunction($scope, $routeParams, $location){
 	switch($routeParams.who){
 		case "human":
 			$scope.title = "Human Vs. Human";
+			$scope.directions = "When playing agaisnt another person you can use oldest person goes first, a coin toss, or just about anthing to determine who goes first. You can also choose 'x or o.'";
 			break
 
 		case "computer":
 			$scope.title = "Human Vs. Computer";
+			$scope.directions = "When playing agaisnt the computer, the human goes first. It's the only way the (midly) entertain the computer. You can still choose 'x or o.'"
 			break
 		default:
 			alert('That is not a valid URL.');
 			$location.path('/');
 			break
 	}
-
 	//Tic Tac Toe Cell Class
 	function cell(selected, player) {
 
 	  this.selected = selected;
 	  this.player = player;
-	  this.cellIcon = 'fa fa-square fa-4x';
+	  this.cellIcon = '';
 
 	  this.setSelected = function setSelected() {
 	    this.selected = true;
@@ -40,6 +41,7 @@ function GameControllerFunction($scope, $routeParams, $location){
 	  }
 
 	}
+
 
 	function playerMatches(functionCell1, functionCell2, functionCell3){
 		//Checks if Players Match
@@ -76,16 +78,17 @@ function GameControllerFunction($scope, $routeParams, $location){
 	}
 
 	function switchPlayer(functionCell){
-		console.log($scope.currentPlayer);
-		if($scope.currentPlayer == 'x'){
-			$scope.currentPlayer = 'o';
+		if($scope.currentPlayer == 'X'){
+			$scope.currentPlayer = 'O';
+			functionCell.cellIcon = '<i class="fa fa-times  fa-4x cellIcon"></i>';
 		} else {
-			$scope.currentPlayer = 'x';
+			$scope.currentPlayer = 'X';
+			functionCell.cellIcon = '<i class="fa fa-circle-o   fa-4x cellIcon"></i>';
 		}
 	}
 
 	//current variable setup
-	$scope.currentPlayer = 'x';
+	$scope.currentPlayer = 'X';
 	var cell1 = new cell(false, null),
 	    cell2 = new cell(false, null),
 	    cell3 = new cell(false, null),
@@ -96,67 +99,99 @@ function GameControllerFunction($scope, $routeParams, $location){
 	    cell8 = new cell(false, null),
 	    cell9 = new cell(false, null);
 
-	
+	$scope.cell1 = cell1;
+	$scope.cell2 = cell2;
+	$scope.cell3 = cell3;
+	$scope.cell4 = cell4;
+	$scope.cell5 = cell5;
+	$scope.cell6 = cell6;
+	$scope.cell7 = cell7;
+	$scope.cell8 = cell8;
+	$scope.cell9 = cell9;
+
+	console.log(cell1.cellIcon);
 
 	//handles whether a cell has been clicked
 	$scope.cellClick = function(cellNumber) {
 		switch(cellNumber){
 			case 1:
 				cell1.setSelected();
-				cell1.setPlayer(cell1);
+				cell1.setPlayer($scope.currentPlayer);
+				switchPlayer(cell1);
 				checkWinner();
-				switchPlayer();
 				break
 			case 2:
 				cell2.setSelected();
 				cell2.setPlayer($scope.currentPlayer);
+				switchPlayer(cell2);
 				checkWinner();
-				switchPlayer();
 				break
 			case 3:
 				cell3.setSelected();
 				cell3.setPlayer($scope.currentPlayer);
+				switchPlayer(cell3);
 				checkWinner();
-				switchPlayer();
 				break
 			case 4:
 				cell4.setSelected();
 				cell4.setPlayer($scope.currentPlayer);
+				switchPlayer(cell4);
 				checkWinner();
-				switchPlayer();
 				break
 			case 5:
 				cell5.setSelected();
 				cell5.setPlayer($scope.currentPlayer);
+				switchPlayer(cell5);
 				checkWinner();
-				switchPlayer();
 				break
 			case 6:
 				cell6.setSelected();
 				cell6.setPlayer($scope.currentPlayer);
+				switchPlayer(cell6);
 				checkWinner();
-				switchPlayer();
 				break
 			case 7:
 				cell7.setSelected();
 				cell7.setPlayer($scope.currentPlayer);
+				switchPlayer(cell7);
 				checkWinner();
-				switchPlayer();
 				break
 			case 8:
 				cell8.setSelected();
 				cell8.setPlayer($scope.currentPlayer);
+				switchPlayer(cell8);
 				checkWinner();
-				switchPlayer();
 				break
 			case 9:
 				cell9.setSelected();
 				cell9.setPlayer($scope.currentPlayer);
+				switchPlayer(cell9);
 				checkWinner();
-				switchPlayer();
 				break
 		}
 	}
+
+	function resetGame() {
+		cell1 = new cell(false, null),
+	    cell2 = new cell(false, null),
+	    cell3 = new cell(false, null),
+	    cell4 = new cell(false, null),
+	    cell5 = new cell(false, null),
+	    cell6 = new cell(false, null),
+	    cell7 = new cell(false, null),
+	    cell8 = new cell(false, null),
+	    cell9 = new cell(false, null);
+	    $scope.cell1 = cell1;
+		$scope.cell2 = cell2;
+		$scope.cell3 = cell3;
+		$scope.cell4 = cell4;
+		$scope.cell5 = cell5;
+		$scope.cell6 = cell6;
+		$scope.cell7 = cell7;
+		$scope.cell8 = cell8;
+		$scope.cell9 = cell9;
+	}
+
 
 	//Checks for winner.
 	function checkWinner(){
@@ -180,46 +215,55 @@ function GameControllerFunction($scope, $routeParams, $location){
 		if(cellsSelected(cell1, cell2, cell3) && playerMatches(cell1, cell2, cell3)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if(cellsSelected(cell4, cell5, cell6) && playerMatches(cell4, cell5, cell6)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if(cellsSelected(cell7, cell8, cell9) && playerMatches(cell7, cell8, cell9)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if(cellsSelected(cell1, cell4, cell7) && playerMatches(cell1, cell4, cell7)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if(cellsSelected(cell2, cell5, cell8) && playerMatches(cell2, cell5, cell8)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if(cellsSelected(cell3, cell6, cell9) && playerMatches(cell3, cell6, cell9)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if(cellsSelected(cell1, cell5, cell9) && playerMatches(cell1, cell5, cell9)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if(cellsSelected(cell3, cell5, cell7) && playerMatches(cell3, cell5, cell7)){
 			//Winner Logic
 			alert("winner!");
+			resetGame();
 		}
 
 		if (checkDraw()){
 			//draw logic
 			alert("draw!");
+			resetGame();
 		}
 	}
 

@@ -3,15 +3,15 @@ ticTacToe.config(['$routeProvider',
     $routeProvider.
       when('/home', {
         templateUrl: 'Main/Views/home.html',
-        controller: 'HomeController'
+        controller: 'HomeController as home'
       }).
       when('/about', {
         templateUrl: 'Main/Views/about.html',
-        controller: 'AboutController'
+        controller: 'AboutController as about'
       }).
       when('/game/:who', {
         templateUrl: 'Main/Views/game.html',
-        controller: 'GameController'
+        controller: 'GameController as game'
       }).
       otherwise({
         redirectTo: '/home'
