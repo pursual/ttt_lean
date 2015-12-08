@@ -10,7 +10,7 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 
 			case "computer":
 				$scope.title = "Human Vs. Computer";
-				$scope.directions = "When playing agaisnt the computer, the human goes first. It's the only way to (midly) entertain the computer. X goes first.'"
+				$scope.directions = "When playing agaisnt the computer, the human goes first. It's the only way to (mildly) entertain the computer. X goes first.'"
 				break
 			default:
 				alert('That is not a valid URL.');
@@ -106,69 +106,51 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 
 		//- cell1, cell2, cell3
 		if(cellsSelected(board[0], board[1], board[2]) && playerMatches(board[0], board[1], board[2])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[0].getPlayer();
 			return true;
 		} 
 
 		//- cell4, cell5, cell6
 		if(cellsSelected(board[3], board[4], board[5]) && playerMatches(board[3], board[4], board[5])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[3].getPlayer();
 			return true;
 		} 
 
 		//- cell7, cell8, cell9
 		if(cellsSelected(board[6], board[7], board[8]) && playerMatches(board[6], board[7], board[8])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[6].getPlayer();
 			return true;
 		} 
 
 		//- cell1, cell4, cell7
 		if(cellsSelected(board[0], board[3], board[6]) && playerMatches(board[0], board[3], board[6])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[0].getPlayer();
 			return true;
 		} 
 
 		//- cell2, cell5, cell8
 		if(cellsSelected(board[1], board[4], board[7]) && playerMatches(board[1], board[4], board[7])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[1].getPlayer();
 			return true;
 		} 
 
 		//- cell3, cell6, cell9
 		if(cellsSelected(board[2], board[5], board[8]) && playerMatches(board[2], board[5], board[8])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[2].getPlayer();
 			return true;
 		} 
 
 		//- cell1, cell5, cell9
 		if(cellsSelected(board[0], board[4], board[8]) && playerMatches(board[0], board[4], board[8])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[0].getPlayer();
 			return true;
 		} 
 
 		//- cell3, cell5, cell7
 		if(cellsSelected(board[2], board[4], board[6]) && playerMatches(board[2], board[4], board[6])){
-			//Winner Logic
-			//resetGame();
 			$scope.setWinner = board[2].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 	}
 	
 	function makeMove(move, player, board){
@@ -234,14 +216,13 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 				if (newBoard) {
 					var predictedMoveValue = maxValueForO(newBoard);
 					if (predictedMoveValue < bestMoveValue) {
-						//you dont want to return best
 						bestMoveValue = predictedMoveValue;
 						move = i;
 					}
 				}
 			}
 
-			return move;
+			return bestMoveValue;
 		}
 	}
 
@@ -267,42 +248,52 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 				var newBoard = makeMove(i, 'O', board);
 				if (newBoard) {
 					var predictedMoveValue = minValueForX(newBoard);
-					if (predictedMoveValue >= bestMoveValue) {
+					if (predictedMoveValue > bestMoveValue) {
 						bestMoveValue = predictedMoveValue;
 						move = i;
 					}
 				}
 			}
 
-			return move;
+			return bestMoveValue;
 		}
 	}
 
 	function ticTacToeAi(){	
 	
 		var moveID = findMove(CurrentBoard);
+		$scope.currentPlayer = 'X';
 		CurrentBoard[moveID].setSelected();
 		CurrentBoard[moveID].setPlayer('O');
 		CurrentBoard[moveID].cellIcon = '<i class="fa fa-circle-o   fa-4x cellIcon"></i>';
-		$scope.currentPlayer = 'X';
+		$scope.aiMessage = '';
 		if(checkWinner(CurrentBoard)){
-			resetGame();
-			alert("the computer cant lose.");
+			$scope.gameOver = true;
+			$scope.gameResult = "The computer has won.";
+			$("#myModal").modal();
+		} 
+		if (checkDraw(CurrentBoard)){
+			$scope.gameOver = true;
+			$scope.gameResult = "The game ended in a draw.";
+			$("#myModal").modal();
 		}
+
 	}
 
 	//This function handles switching players for both human and computer modes.
 	function switchPlayer(functionCell){
 		
-		if($routeParams.who == 'computer' && $scope.currentPlayer == 'X'){
+		if($routeParams.who == 'computer' && $scope.currentPlayer == 'X' && $scope.gameOver === false){
 			functionCell.cellIcon = '<i class="fa fa-times  fa-4x cellIcon"></i>';
+			$scope.currentPlayer = 'O';
+			$scope.aiMessage = 'The computer is thinking: ' + '<i class="fa fa-circle-o-notch fa-spin"></i>';
 			//placing AI logic here. 
 			$timeout(function () {
 				ticTacToeAi();
-			}, 500);
+			}, 1000);
 		} else {
 			
-			if($scope.currentPlayer == 'X'){
+			if($scope.currentPlayer == 'X' && $scope.gameOver === false){
 				$scope.currentPlayer = 'O';
 				functionCell.cellIcon = '<i class="fa fa-times  fa-4x cellIcon"></i>';
 			} else {
@@ -315,6 +306,7 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 
 	//current variable setup
 	$scope.currentPlayer = 'X';
+	$scope.gameOver = false;
 	var cell1 = new cell(false, 1, null),
 	    cell2 = new cell(false, 2, null),
 	    cell3 = new cell(false, 3, null),
@@ -338,128 +330,23 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 
 	//handles whether a cell has been clicked
 	$scope.cellClick = function (cellNumber) {
-		switch(cellNumber){
-			case 1:
-				cell1.setSelected();
-				cell1.setPlayer($scope.currentPlayer);
-				switchPlayer(cell1);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 2:
-				cell2.setSelected();
-				cell2.setPlayer($scope.currentPlayer);
-				switchPlayer(cell2);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 3:
-				cell3.setSelected();
-				cell3.setPlayer($scope.currentPlayer);
-				switchPlayer(cell3);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 4:
-				cell4.setSelected();
-				cell4.setPlayer($scope.currentPlayer);
-				switchPlayer(cell4);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 5:
-				cell5.setSelected();
-				cell5.setPlayer($scope.currentPlayer);
-				switchPlayer(cell5);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 6:
-				cell6.setSelected();
-				cell6.setPlayer($scope.currentPlayer);
-				switchPlayer(cell6);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 7:
-				cell7.setSelected();
-				cell7.setPlayer($scope.currentPlayer);
-				switchPlayer(cell7);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 8:
-				cell8.setSelected();
-				cell8.setPlayer($scope.currentPlayer);
-				switchPlayer(cell8);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
-			case 9:
-				cell9.setSelected();
-				cell9.setPlayer($scope.currentPlayer);
-				switchPlayer(cell9);
-				if (checkWinner(CurrentBoard)){
-					resetGame();
-					//rest of win logic.
-				};
-				if (checkDraw(CurrentBoard)){
-					resetGame();
-					//rest of draw logic.
-				}
-				break
+		var cell = $scope['cell' + cellNumber];
+		cell.setSelected();
+		cell.setPlayer($scope.currentPlayer);
+		if (checkWinner(CurrentBoard)){
+			$scope.gameOver = true;
+			$scope.gameResult = $scope.currentPlayer + " has won the game.";
+			$("#myModal").modal();
 		}
-	}
+		if (checkDraw(CurrentBoard)){
+			$scope.gameOver = true;
+			$scope.gameResult = "The game ended in a draw.";
+			$("#myModal").modal();
+		}
+		switchPlayer(cell);
+	};
 
-	function resetGame() {
+	$scope.resetGame = function (){
 		cell1 = new cell(false, 1, null),
 	    cell2 = new cell(false, 2, null),
 	    cell3 = new cell(false, 3, null),
@@ -480,6 +367,7 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 		$scope.cell8 = cell8;
 		$scope.cell9 = cell9;
 		$scope.currentPlayer = 'X'; 
+		$scope.gameOver = false;
 	}
 
 
