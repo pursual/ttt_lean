@@ -1,103 +1,103 @@
-	    	<div class="wrapperDark">
+				<div class="wrapperDark">
 
-	    		<div class="container" id="divider5">
+					<div class="container" id="divider5">
 
-	    			<!-- Modal -->
-	    			<div class="modal fade" id="myModal" role="dialog">
-	    				<div class="modal-dialog">
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" role="dialog">
+							<div class="modal-dialog">
 
-	    					<!-- Modal content-->
-	    					<div class="modal-content">
-	    						<div class="modal-header">
-	    						<button type="button" ng-click="resetGame()" class="close" data-dismiss="modal">&times;</button>
-	    							<h4 class="modal-title">Game Over</h4>
-	    						</div>
-	    						<div class="modal-body">
-	    							<p>{{gameResult}}</p>
-	    						</div>
-	    						<div class="modal-footer">
-	    							<button ng-click="resetGame()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	    						</div>
-	    					</div>
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+									<button type="button" ng-click="resetGame()" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Game Over</h4>
+									</div>
+									<div class="modal-body">
+										<p>{{gameResult}}</p>
+									</div>
+									<div class="modal-footer">
+										<button ng-click="resetGame()" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
 
-	    				</div>
-	    			</div>
-	    			<div class="col-md-12">
+							</div>
+						</div>
+						<div class="col-md-12">
 
-	    				<div class="divider dashed">
+							<div class="divider dashed">
 
-	    					<span class="editContent">{{title}}</span>
+								<span class="editContent">{{title}}</span>
 
-	    				</div><!-- /.divider -->
+							</div><!-- /.divider -->
 
-	    			</div><!-- /.col -->
+						</div><!-- /.col -->
 
-	    		</div><!-- /.container -->
+					</div><!-- /.container -->
 
-	    	</div><!-- /.wrapperDark -->
-	    	<!-- Start Content Block 1-5 v2 -->
-	    	<section class="content-1-5 content-block">
+				</div><!-- /.wrapperDark -->
+				<!-- Start Content Block 1-5 v2 -->
+				<section class="content-1-5 content-block">
 
-	    		<div class="container">
-	    			<div class="row">
-	    				<div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-12 pull-right">
-	    					<div class="editContent">
-	    						<h1>Who Goes First? </h1>
-	    					</div>
-	    					<div class="editContent">
-	    						<p class="lead">{{directions}}</p>
-	    					</div>
-	    					<div class="editContent">
-	    						<h1>Current Player: {{currentPlayer}}</h1>
-	    						<p ng-bind-html="aiMessage"></p>
-	    					</div>
-	    				</div>
-	    				<div class="col-lg-5 col-md-6 col-sm-12 pull-left pull-left">
-	    					<div id="gameContainer">
-	    						<!-- Top Row Start-->
-	    						<div class"row" >
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(1)" id="topLeftCell">
-	    								<i ng-bind-html="cell1.cellIcon"></i>
-	    							</div>	
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(2)" id="topMiddleCell">
-	    								<i ng-bind-html="cell2.cellIcon"></i>
-	    							</div>	
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(3)" id="topRightCell">
-	    								<i ng-bind-html="cell3.cellIcon"></i>
-	    							</div>	
-	    						</div>
-	    						<!-- Top Row Stop-->
-	    						<!-- Center Row Start-->
-	    						<div class"row" >	
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(4)" id="centerLeftCell">
-	    								<i ng-bind-html="cell4.cellIcon"></i>
-	    							</div>	
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(5)" id="centerMiddleCell">
-	    								<i ng-bind-html="cell5.cellIcon"></i>
-	    							</div>	
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(6)" id="centerRightCell">
-	    								<i ng-bind-html="cell6.cellIcon"></i>
-	    							</div>	
-	    						</div>
-	    						<!-- Center Row Stop-->
-	    						<!-- Bottom Row Start-->
-	    						<div class"row" >
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(7)" id="bottomLeftCell">
-	    								<i ng-bind-html="cell7.cellIcon"></i>
-	    							</div>	
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(8)" id="bottomMiddleCell">
-	    								<i ng-bind-html="cell8.cellIcon"></i>
-	    							</div>	
-	    							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(9)" id="bottomRightCell">
-	    								<i ng-bind-html="cell9.cellIcon"></i>
-	    							</div>	
-	    						</div>
-	    						<!-- Bottom Row Stop-->
-	    					</div>
-	    				</div>
-	    			</div><!-- /.row -->
-	    		</div><!-- /.container -->
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-6 col-lg-offset-1 col-md-6 col-sm-12 pull-right">
+								<div class="editContent">
+									<h1>Who Goes First? </h1>
+								</div>
+								<div class="editContent">
+									<p class="lead">{{directions}}</p>
+								</div>
+								<div class="editContent">
+									<h1>Current Player: {{currentPlayer}}</h1>
+									<p ng-bind-html="aiMessage"></p>
+								</div>
+							</div>
+							<div class="col-lg-5 col-md-6 col-sm-12 pull-left pull-left">
+								<div id="gameContainer">
+									<!-- Top Row Start-->
+									<div class"row" >
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(0)" id="topLeftCell">
+											<i ng-class="board[0] === 'O'? 'fa-circle-o':board[0] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(1)" id="topMiddleCell">
+											<i ng-class="board[1] === 'O'? 'fa-circle-o':board[1] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(2)" id="topRightCell">
+											<i ng-class="board[2] === 'O'? 'fa-circle-o':board[2] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+									</div>
+									<!-- Top Row Stop-->
+									<!-- Center Row Start-->
+									<div class"row" >	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(3)" id="centerLeftCell">
+											<i ng-class="board[3] === 'O'? 'fa-circle-o':board[3] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(4)" id="centerMiddleCell">
+											<i ng-class="board[4] === 'O'? 'fa-circle-o':board[4] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(5)" id="centerRightCell">
+											<i ng-class="board[5] === 'O'? 'fa-circle-o':board[5] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+									</div>
+									<!-- Center Row Stop-->
+									<!-- Bottom Row Start-->
+									<div class"row" >
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(6)" id="bottomLeftCell">
+											<i ng-class="board[6] === 'O'? 'fa-circle-o':board[6] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(7)" id="bottomMiddleCell">
+											<i ng-class="board[7] === 'O'? 'fa-circle-o':board[7] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ticTacToeCell" ng-click="cellClick(8)" id="bottomRightCell">
+											<i ng-class="board[8] === 'O'? 'fa-circle-o':board[8] === 'X'?'fa-times':''" class="fa fa-4x cellIcon"></i>
+										</div>	
+									</div>
+									<!-- Bottom Row Stop-->
+								</div>
+							</div>
+						</div><!-- /.row -->
+					</div><!-- /.container -->
 
-	    	</section>
+				</section>
 
-    <!-- // End Content Block 1-5 v2 -->
+		<!-- // End Content Block 1-5 v2 -->
