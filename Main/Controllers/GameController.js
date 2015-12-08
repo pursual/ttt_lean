@@ -103,70 +103,64 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 				- cell1, cell5, cell9
 				- cell3, cell5, cell7
 		*/ 
-	
+
+		//- cell1, cell2, cell3
 		if(cellsSelected(board[0], board[1], board[2]) && playerMatches(board[0], board[1], board[2])){
 			//Winner Logic
 			//resetGame();
 			$scope.setWinner = board[0].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 
+		//- cell4, cell5, cell6
 		if(cellsSelected(board[3], board[4], board[5]) && playerMatches(board[3], board[4], board[5])){
 			//Winner Logic
 			//resetGame();
 			$scope.setWinner = board[3].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 
+		//- cell7, cell8, cell9
 		if(cellsSelected(board[6], board[7], board[8]) && playerMatches(board[6], board[7], board[8])){
 			//Winner Logic
 			//resetGame();
 			$scope.setWinner = board[6].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 
+		//- cell1, cell4, cell7
 		if(cellsSelected(board[0], board[3], board[6]) && playerMatches(board[0], board[3], board[6])){
 			//Winner Logic
 			//resetGame();
 			$scope.setWinner = board[0].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 
+		//- cell2, cell5, cell8
 		if(cellsSelected(board[1], board[4], board[7]) && playerMatches(board[1], board[4], board[7])){
 			//Winner Logic
 			//resetGame();
 			$scope.setWinner = board[1].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 
+		//- cell3, cell6, cell9
 		if(cellsSelected(board[2], board[5], board[8]) && playerMatches(board[2], board[5], board[8])){
 			//Winner Logic
 			//resetGame();
 			$scope.setWinner = board[2].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 
+		//- cell1, cell5, cell9
 		if(cellsSelected(board[0], board[4], board[8]) && playerMatches(board[0], board[4], board[8])){
 			//Winner Logic
 			//resetGame();
 			$scope.setWinner = board[0].getPlayer();
 			return true;
-		} else {
-			return false;
-		}
+		} 
 
+		//- cell3, cell5, cell7
 		if(cellsSelected(board[2], board[4], board[6]) && playerMatches(board[2], board[4], board[6])){
 			//Winner Logic
 			//resetGame();
@@ -197,13 +191,19 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 	function findMove(board){
 		var bestMoveValue = -100;
 		var move = 0;
+		
+		//This Loop Calls MakeMove with Move starting at 0.
+		//MakeMove calls checkSelected on the cell in that board.
+		//if False, it returns the newBoard with that cell selected 
+		//and set to player of 'O.' Then it passes newBoard to minValueForX
+		//Where minValueForX trades it with maxValueforO until a good score 
+		//is reached.
 		for (var i = 0; i < board.length; i++) {
 			var newBoard = makeMove(i, 'O', board);
 			if (newBoard) {
 				var predictedMoveValue = minValueForX(newBoard);
 				if(predictedMoveValue > bestMoveValue){
 					bestMoveValue = predictedMoveValue;
-					console.log('bestMoveValueForFindMove: ' + bestMoveValue);
 					move = i;
 				}
 			}
@@ -218,7 +218,7 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 			if ($scope.setWinner == "O"){
 				return 1;
 			} else {
-				return -1
+				return -1;
 			}
 		
 		} else if (checkDraw(board)) {
@@ -233,17 +233,15 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 				var newBoard = makeMove(i, 'X', board);
 				if (newBoard) {
 					var predictedMoveValue = maxValueForO(newBoard);
-					console.log('inMinValueForX');
-					console.log(newBoard);
 					if (predictedMoveValue < bestMoveValue) {
+						//you dont want to return best
 						bestMoveValue = predictedMoveValue;
-						console.log('bestMoveValueForX: ' + bestMoveValue);
 						move = i;
 					}
 				}
 			}
 
-			return bestMoveValue;
+			return move;
 		}
 	}
 
@@ -254,7 +252,7 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 			if ($scope.setWinner == "O"){
 				return 1;
 			} else {
-				return -1
+				return -1;
 			}
 		
 		} else if (checkDraw(board)) {
@@ -267,18 +265,16 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 			var move = 0;
 			for (var i = 0; i < board.length; i++) {
 				var newBoard = makeMove(i, 'O', board);
-				console.log('inMinValueForX');
-					console.log(newBoard);
 				if (newBoard) {
 					var predictedMoveValue = minValueForX(newBoard);
-					if (predictedMoveValue > bestMoveValue) {
+					if (predictedMoveValue >= bestMoveValue) {
 						bestMoveValue = predictedMoveValue;
 						move = i;
 					}
 				}
 			}
 
-			return bestMoveValue;
+			return move;
 		}
 	}
 
@@ -289,7 +285,10 @@ ticTacToe.controller('GameController', ['$scope', '$routeParams', '$location', '
 		CurrentBoard[moveID].setPlayer('O');
 		CurrentBoard[moveID].cellIcon = '<i class="fa fa-circle-o   fa-4x cellIcon"></i>';
 		$scope.currentPlayer = 'X';
-		
+		if(checkWinner(CurrentBoard)){
+			resetGame();
+			alert("the computer cant lose.");
+		}
 	}
 
 	//This function handles switching players for both human and computer modes.
